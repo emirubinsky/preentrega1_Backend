@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "PS5",
+    "description": "Playstation 5 con God of War",
+    "code": "PR001",
+    "price": 1350000,
+    "status": true,
+    "stock": 10,
+    "category": "Electrónica",
+    "thumbnail": "https://example.com/thumbnail1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Saga Harry Potter",
+    "description": "Saga completa de harry potter",
+    "code": "PR004",
+    "price": 40000,
+    "status": true,
+    "stock": 10,
+    "category": "Literatura",
+    "thumbnail": "https://example.com/thumbnail.jpg"
+  }
+]
