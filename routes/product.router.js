@@ -3,8 +3,6 @@ import fs from "fs";
 
 const productRouter = express.Router();
 
-productRouter.use(express.json());
-
 productRouter.get("/", async (req, res) => {
     try {
         const limit = req.query.limit ? parseInt(req.query.limit) : null;
@@ -40,7 +38,7 @@ productRouter.get("/:pid", async (req, res) => {
     }
 });
 
-productRouter.post("/add", async (req, res) => {
+productRouter.post("/agregar", async (req, res) => {
     try {
         const {
             title,
@@ -84,7 +82,7 @@ productRouter.post("/add", async (req, res) => {
     }
 });
 
-productRouter.put("/update/:pid", async (req, res) => {
+productRouter.put("/actualizarProducto/:pid", async (req, res) => {
     try {
         const pid = parseInt(req.params.pid);
         const updateFields = req.body;
@@ -124,7 +122,7 @@ productRouter.put("/update/:pid", async (req, res) => {
     }
 });
 
-productRouter.delete("/delete/:pid", async (req, res) => {
+productRouter.delete("/borrarProducto/:pid", async (req, res) => {
     try {
         const pid = parseInt(req.params.pid);
 
