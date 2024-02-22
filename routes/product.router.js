@@ -38,7 +38,7 @@ productRouter.get("/:pid", async (req, res) => {
     }
 });
 
-productRouter.post("/agregar", async (req, res) => {
+productRouter.post("/", async (req, res) => {
     try {
         const {
             title,
@@ -82,7 +82,7 @@ productRouter.post("/agregar", async (req, res) => {
     }
 });
 
-productRouter.put("/actualizarProducto/:pid", async (req, res) => {
+productRouter.put("/:pid", async (req, res) => {
     try {
         const pid = parseInt(req.params.pid);
         const updateFields = req.body;
@@ -122,7 +122,7 @@ productRouter.put("/actualizarProducto/:pid", async (req, res) => {
     }
 });
 
-productRouter.delete("/borrarProducto/:pid", async (req, res) => {
+productRouter.delete("/:pid", async (req, res) => {
     try {
         const pid = parseInt(req.params.pid);
 

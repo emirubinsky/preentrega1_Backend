@@ -9,33 +9,13 @@ cartsRouter.post("/", async (req, res) => {
         const carritos = JSON.parse(rawData);
         
         // Genera un nuevo ID autoincrementable
-        const newCartId = carritos.length + 1;
+        const newCartId = Math.max(...carritos.map(cart => cart.id), 0) + 1;
         
-        // Verifica si el cuerpo de la solicitud contiene la lista de productos
-        if (!req.body || !Array.isArray(req.body.products)) {
-            return res.status(400).json({ error: "Campos vacíos o inválidos en el request.body.products" });
-        }
-
         // Estructura del nuevo carrito con el array de productos vacío
         const newCart = {
             id: newCartId,
-            products: []
+            products: [] 
         };
-        
-        // Si se proporcionan productos, los agrega al carrito
-        if (req.body.products.length > 0) {
-            // Verifica que cada producto tenga tanto el ID del producto como la cantidad
-            const isValidProducts = req.body.products.every(product => product.id && product.quantity);
-            if (!isValidProducts) {
-                return res.status(400).json({ error: "Cada producto debe tener un ID y una cantidad" });
-            }
-            
-            // Agrega los productos al carrito
-            newCart.products = req.body.products.map(product => ({
-                id: product.id,
-                quantity: product.quantity
-            }));
-        }
         
         // Agrega el nuevo carrito al array de carritos
         carritos.push(newCart);
@@ -49,7 +29,6 @@ cartsRouter.post("/", async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
-
 
 cartsRouter.get("/getCarts", async (req, res) => {
     try {
